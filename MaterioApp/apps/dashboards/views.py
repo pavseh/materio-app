@@ -12,11 +12,10 @@ Refer to dashboards/urls.py file for more pages.
 class DashboardsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = TemplateLayout.init(self, super().get_context_data(**kwargs))
-        context['colleges'] = College.objects.all()
-        context['organizations'] = Organization.objects.all()
-        context['org_members'] = OrgMember.objects.all()
-        context['programs'] = Program.objects.all()
-        context['students'] = Student.objects.all()
+        context['colleges_count'] = College.objects.count()
+        context['organizations_count'] = Organization.objects.count()
+        context['programs_count'] = Program.objects.count()
+        context['students_count'] = Student.objects.count()
         return context
 
     # old template view - static data
