@@ -32,7 +32,7 @@
         <p class="mb-2">AppDev</p>
         <a href="javascript:;" class="btn btn-sm btn-primary">View Profile</a>
       </div>
-      <img src="{% static 'img/illustrations/miyabi.png' %}" class="position-absolute bottom-0 end-0 me-5 mb-5" width="100" alt="view sales">
+      <img src="{% static 'img/illustrations/miyabi-profile.png' %}" class="position-absolute bottom-0 end-0 me-5 mb-5" width="100" alt="view sales">
     </div>
   </div>
   <!--/ Congratulations card -->
@@ -121,7 +121,7 @@
     <div class="card">
       <div class="card-header">
         <div class="d-flex justify-content-between">
-          <h5 class="mb-1">Weekly Overview</h5>
+          <h5 class="mb-1">Students</h5>
           <div class="dropdown">
             <button class="btn text-muted p-0" type="button" id="weeklyOverviewDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="ri-more-2-line ri-24px"></i>
@@ -138,8 +138,8 @@
         <div id="weeklyOverviewChart"></div>
         <div class="mt-1 mt-md-3">
           <div class="d-flex align-items-center gap-4">
-            <h4 class="mb-0">45%</h4>
-            <p class="mb-0">Your sales performance is 45% 😎 better compared to last month</p>
+            <h4 class="mb-0">{{ students_count }}</h4>
+            <p class="mb-0">No. of Students Enrolled</p>
           </div>
           <div class="d-grid mt-3 mt-md-4">
             <button class="btn btn-primary" type="button">Details</button>
