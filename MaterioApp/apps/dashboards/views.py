@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 from .models import College, Organization, OrgMember, Program, Student
 from web_project import TemplateLayout
+from django.shortcuts import render
 from django.db.models.functions import TruncDate
 from django.db.models import Count
 import json
@@ -31,6 +32,19 @@ class DashboardsView(TemplateView):
         context['student_chart_labels'] = json.dumps([str(item['date']) for item in daily_counts])
         context['student_chart_data'] = json.dumps([item['count'] for item in daily_counts])
         return context
+
+    def dashboard_analytics(request):
+        students_count = Student.objects.all()
+        django_users_count = students_count[:30]
+        javascript_users_count = students_count[30:50]
+        aviato_users_count = students_count[50:64]
+
+        context = {
+            'django_users_count': django_users_count,
+            'javascript_users_count': javascript_users_count,
+            'aviato_users_count': aviato_users_count,
+        }
+        return render(request, 'dashboard_analytics.html', context)
 
     # old template view - static data
     # class DashboardsView(TemplateView):
