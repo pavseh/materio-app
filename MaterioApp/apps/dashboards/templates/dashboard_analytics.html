@@ -5,18 +5,20 @@
 
 {% block title %}Dashboard - Analytics{% endblock title %}
 
-{% block vendor_css %}
+<!-- {% block vendor_css %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'vendor/libs/apex-charts/apex-charts.css' %}" />
-{% endblock vendor_css %}
+{% endblock vendor_css %} -->
 
 {% block vendor_js %}
 {{ block.super }}
-<script src="{% static 'vendor/libs/apex-charts/apexcharts.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 {% endblock vendor_js %}
 
 {% block page_js %}
 {{ block.super }}
+<script id="student-chart-labels" type="application/json">{{ student_chart_labels|safe }}</script>
+<script id="student-chart-data" type="application/json">{{ student_chart_data|safe }}</script>
 <script src="{% static 'js/dashboards-analytics.js' %}"></script>
 {% endblock page_js %}
 
@@ -116,7 +118,7 @@
   </div>
   <!--/ Transactions -->
 
-  <!-- Weekly Overview Chart -->
+  <!-- Students Count Chart -->
   <div class="col-xl-4 col-md-6">
     <div class="card">
       <div class="card-header">
@@ -135,7 +137,9 @@
         </div>
       </div>
       <div class="card-body pt-lg-2">
-        <div id="weeklyOverviewChart"></div>
+        <div id="weeklyOverviewChart">
+          <canvas id="weeklyOverviewLineChart"></canvas>
+        </div>
         <div class="mt-1 mt-md-3">
           <div class="d-flex align-items-center gap-4">
             <h4 class="mb-0">{{ students_count }}</h4>
@@ -148,13 +152,13 @@
       </div>
     </div>
   </div>
-  <!--/ Weekly Overview Chart -->
+  <!--/ Students Count Chart -->
 
-  <!-- Total Earnings -->
+  <!-- Total Students -->
   <div class="col-xl-4 col-md-6">
     <div class="card">
       <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="card-title m-0 me-2">Total Earning</h5>
+        <h5 class="card-title m-0 me-2">Total Students</h5>
         <div class="dropdown">
           <button class="btn text-muted p-0" type="button" id="totalEarnings" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="ri-more-2-line ri-24px"></i>
@@ -169,13 +173,13 @@
       <div class="card-body pt-lg-8">
         <div class="mb-5 mb-lg-12">
           <div class="d-flex align-items-center">
-            <h3 class="mb-0">$24,895</h3>
+            <h3 class="mb-0">{{ students_count }}</h3>
             <span class="text-success ms-2">
               <i class="ri-arrow-up-s-line"></i>
               <span>10%</span>
             </span>
           </div>
-          <p class="mb-0">Compared to $84,325 last year</p>
+          <p class="mb-0">Enrolled at AppDev</p>
         </div>
         <ul class="p-0 m-0">
           <li class="d-flex mb-6">
