@@ -257,9 +257,9 @@
           </div>
         </div>
       </div>
-      <!--/ Total Profit line chart -->
+      <!--/ Total Organizations Bar chart -->
 
-      <!-- Total Profit Weekly Project -->
+      <!-- Total Students v2 -->
       <div class="col-sm-6">
         <div class="card h-100">
           <div class="card-header d-flex align-items-center justify-content-between">
@@ -280,16 +280,18 @@
             </div>
           </div>
           <div class="card-body">
-            <h6 class="mb-1">Total Profit</h6>
+            <h6 class="mb-1">Total Students</h6>
             <div class="d-flex flex-wrap mb-1 align-items-center">
-              <h4 class="mb-0 me-2">$25.6k</h4>
-              <p class="text-success mb-0">+42%</p>
+              <h4 class="mb-0 me-2">{{ students_count}}</h4>
+              <!-- <p class="text-success mb-0">+42%</p> -->
             </div>
-            <small>Weekly Project</small>
+            <small class="text-center mb-3">BSIT Students</small>
           </div>
         </div>
       </div>
-      <!--/ Total Profit Weekly Project -->
+      <!--/ Total Students v2 -->
+
+
       <!-- New Yearly Project -->
       <div class="col-sm-6">
         <div class="card h-100">
@@ -321,22 +323,26 @@
         </div>
       </div>
       <!--/ New Yearly Project -->
-      <!-- Sessions chart -->
+
+      <!-- Total Programs Pie chart -->
       <div class="col-sm-6">
         <div class="card h-100">
           <div class="card-header pb-0">
-            <h4 class="mb-0">2,856</h4>
+            <h6 class="mb-0">College Programs</h6>
           </div>
           <div class="card-body">
-            <div id="sessionsColumnChart" class="mb-3"></div>
-            <h6 class="text-center mb-0">Sessions</h6>
+            <script id="programs-labels" type="application/json">{{ programs_labels|safe }}</script>
+            <script id="programs-counts" type="application/json">{{ programs_counts|safe }}</script>
+            <canvas id="totalProgramsPieChart" width="80" height="80"></canvas>
+            <small class="text-center mb-3">Total Programs: {{ programs_count }}</small>
           </div>
         </div>
       </div>
-      <!--/ Sessions chart -->
+      <!--/ Total Programs Pie chart -->
+
     </div>
   </div>
-  <!--/ Total Earning -->
+  <!--/ Four Cards -->
 
   <!-- Sales by Countries -->
   <div class="col-xl-4 col-md-6">

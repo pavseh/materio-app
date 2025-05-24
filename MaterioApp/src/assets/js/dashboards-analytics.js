@@ -90,145 +90,34 @@
     }
   });
 
-  // Sessions Column Chart
+  // Total Programs Pie chart
   // --------------------------------------------------------------------
-  const sessionsColumnChartEl = document.querySelector('#sessionsColumnChart'),
-    sessionsColumnChartConfig = {
-      chart: {
-        height: 90,
-        parentHeightOffset: 0,
-        type: 'bar',
-        toolbar: {
-          show: false
-        }
-      },
-      tooltip: {
-        enabled: false
-      },
-      plotOptions: {
-        bar: {
-          barHeight: '100%',
-          columnWidth: '20px',
-          startingShape: 'rounded',
-          endingShape: 'rounded',
-          borderRadius: 4,
-          colors: {
-            ranges: [
-              {
-                from: 25,
-                to: 32,
-                color: config.colors.danger
-              },
-              {
-                from: 60,
-                to: 75,
-                color: config.colors.primary
-              },
-              {
-                from: 45,
-                to: 50,
-                color: config.colors.danger
-              },
-              {
-                from: 35,
-                to: 42,
-                color: config.colors.primary
-              }
-            ],
-            backgroundBarColors: [chartBgColor, chartBgColor, chartBgColor, chartBgColor, chartBgColor],
-            backgroundBarRadius: 4
-          }
-        }
-      },
-      grid: {
-        show: false,
-        padding: {
-          top: -10,
-          left: -10,
-          bottom: -15
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      legend: {
-        show: false
-      },
-      xaxis: {
-        labels: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        },
-        axisBorder: {
-          show: false
-        }
-      },
-      yaxis: {
-        labels: {
-          show: false
-        }
-      },
-      series: [
-        {
-          data: [30, 70, 50, 40, 60]
-        }
-      ],
-      responsive: [
-        {
-          breakpoint: 1350,
-          options: {
-            chart: {
-              height: 80
-            },
-            plotOptions: {
-              bar: {
-                columnWidth: '40%'
-              }
-            }
-          }
-        },
-        {
-          breakpoint: 1200,
-          options: {
-            chart: {
-              height: 100
-            },
-            plotOptions: {
-              bar: {
-                columnWidth: '20%'
-              }
-            }
-          }
-        },
-        {
-          breakpoint: 768,
-          options: {
-            chart: {
-              height: 110
-            },
-            plotOptions: {
-              bar: {
-                columnWidth: '10%'
-              }
-            }
-          }
-        },
-        {
-          breakpoint: 480,
-          options: {
-            plotOptions: {
-              bar: {
-                columnWidth: '20%'
-              }
-            }
-          }
-        }
-      ]
-    };
-  if (typeof sessionsColumnChartEl !== undefined && sessionsColumnChartEl !== null) {
-    const sessionsColumnChart = new ApexCharts(sessionsColumnChartEl, sessionsColumnChartConfig);
-    sessionsColumnChart.render();
-  }
+  const programsLabels = JSON.parse(document.getElementById('programs-labels').textContent);
+  const programsCounts = JSON.parse(document.getElementById('programs-counts').textContent);
+  const programsColors = [
+    'rgba(255, 99, 132, 0.7)',
+    'rgba(54, 162, 235, 0.7)',
+    'rgba(255, 206, 86, 0.7)',
+    'rgba(75, 192, 192, 0.7)',
+    'rgba(153, 102, 255, 0.7)',
+    'rgba(255, 159, 64, 0.7)'
+  ];
+  const pieColors = programsLabels.map((_, i) => programsColors[i % programsColors.length]);
+  const pieCtx = document.getElementById('totalProgramsPieChart').getContext('2d');
+  new Chart(pieCtx, {
+    type: 'pie',
+    data: {
+      labels: programsLabels,
+      datasets: [{
+        data: programsCounts,
+        backgroundColor: pieColors,
+        borderColor: pieColors.map(color => color.replace('0.7', '1')),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } }
+    }
+  });
 })();

@@ -43,6 +43,10 @@ class DashboardsView(TemplateView):
         context['orgs_labels'] = json.dumps([org.name for org in orgs])
         context['orgs_counts'] = json.dumps([1 for _ in orgs])
         
+        # Colleges Programs
+        programs = Program.objects.all()
+        context['programs_labels'] = json.dumps([prog.prog_name for prog in programs])
+        context['programs_counts'] = json.dumps([1 for _ in programs])
         return context
 
     # old template view - static data
