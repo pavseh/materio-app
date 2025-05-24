@@ -21,14 +21,66 @@ class DashboardsView(TemplateView):
         context['programs_count'] = Program.objects.count()
         context['students_count'] = Student.objects.count()
 
-        # Users
-        student = Student.objects.select_related('program').first()
-        context['student_data'] = {
-            'firstname': student.firstname,
-            'lastname': student.lastname,
-            'student_id': student.student_id,
-            'program_name': student.program.prog_name
+        # Users / Students
+        students = Student.objects.select_related('program').all()[:63]
+        
+        context['student_data1'] = {
+            'firstname': students[0].firstname,
+            'lastname': students[0].lastname,
+            'student_id': students[0].student_id,
+            'program_name': students[0].program.prog_name
         }
+        
+        context['student_data2'] = {
+            'firstname': students[1].firstname,
+            'lastname': students[1].lastname,
+            'student_id': students[1].student_id,
+            'program_name': students[1].program.prog_name
+        }
+
+        context['student_data3'] = {
+            'firstname': students[2].firstname,
+            'lastname': students[2].lastname,
+            'student_id': students[2].student_id,
+            'program_name': students[2].program.prog_name
+        }
+
+
+        context['student_data4'] = {
+            'firstname': students[3].firstname,
+            'lastname': students[3].lastname,
+            'student_id': students[3].student_id,
+            'program_name': students[3].program.prog_name
+        }
+
+        context['student_data5'] = {
+            'firstname': students[4].firstname,
+            'lastname': students[4].lastname,
+            'student_id': students[4].student_id,
+            'program_name': students[4].program.prog_name
+        }
+
+        context['student_data6'] = {
+            'firstname': students[5].firstname,
+            'lastname': students[5].lastname,
+            'student_id': students[5].student_id,
+            'program_name': students[5].program.prog_name
+        }
+
+        context['student_data7'] = {
+            'firstname': students[54].firstname,
+            'lastname': students[54].lastname,
+            'student_id': students[54].student_id,
+            'program_name': students[54].program.prog_name
+        }
+
+        context['student_data8'] = {
+            'firstname': students[62].firstname,
+            'lastname': students[62].lastname,
+            'student_id': students[62].student_id,
+            'program_name': students[62].program.prog_name
+        }
+
 
         # Student Count
         daily_counts = (

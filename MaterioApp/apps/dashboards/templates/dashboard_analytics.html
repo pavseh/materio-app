@@ -608,7 +608,7 @@
               <th class="text-truncate">User</th>
               <th class="text-truncate">College & Program</th>
               <th class="text-truncate">Role</th>
-              <th class="text-truncate">Status</th>
+              <th class="text-truncate">Task Status</th>
             </tr>
           </thead>
           <tbody>
@@ -621,16 +621,16 @@
                     <img src="{% static 'img/avatars/theo.png' %}" alt="Avatar" class="rounded-circle">
                   </div>
                   <div>
-                    <h6 class="mb-0 text-truncate">{{ student_data.firstname }} {{ student_data.lastname }}</h6>
-                    <small class="text-truncate">{{ student_data.student_id }}</small>
+                    <h6 class="mb-0 text-truncate">{{ student_data1.firstname }} {{ student_data1.lastname }}</h6>
+                    <small class="text-truncate">{{ student_data1.student_id }}</small>
                   </div>
                 </div>
               </td>
-              <td class="text-truncate">{{ student_data.program_name }}</td>
+              <td class="text-truncate">{{ student_data1.program_name }}</td>
               <td class="text-truncate">
                 <div class="d-flex align-items-center">
                   <i class="ri-user-2-fill ri-22px text-primary me-2"></i>
-                  <span>Student</span>
+                  <span>Undergraduate Student</span>
                 </div>
               </td>
               <td><span class="badge bg-label-warning rounded-pill">Pending</span></td>
@@ -642,22 +642,22 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div class="avatar avatar-sm me-4">
-                    <img src="{% static 'img/avatars/3.png' %}" alt="Avatar" class="rounded-circle">
+                    <img src="{% static 'img/avatars/ivern.png' %}" alt="Avatar" class="rounded-circle">
                   </div>
                   <div>
-                    <h6 class="mb-0 text-truncate">Benedetto Rossiter</h6>
-                    <small class="text-truncate">@brossiter15</small>
+                    <h6 class="mb-0 text-truncate">{{ student_data2.firstname }} {{ student_data2.lastname }}</h6>
+                    <small class="text-truncate">{{ student_data2.student_id }}</small>
                   </div>
                 </div>
               </td>
-              <td class="text-truncate">estelle.Bailey10@gmail.com</td>
+              <td class="text-truncate">{{ student_data2.program_name }}</td>
               <td class="text-truncate">
                 <div class="d-flex align-items-center">
                   <i class="ri-user-2-fill text-warning ri-22px me-2"></i>
-                  <span>Editor</span>
+                  <span>Undergraduate Student</span>
                 </div>
               </td>
-              <td><span class="badge bg-label-success rounded-pill">Active</span></td>
+              <td><span class="badge bg-label-success rounded-pill">Submitted</span></td>
             </tr>
             <!--/ User 2 -->
 
@@ -669,19 +669,19 @@
                     <img src="{% static 'img/avatars/2.png' %}" alt="Avatar" class="rounded-circle">
                   </div>
                   <div>
-                    <h6 class="mb-0 text-truncate">Bentlee Emblin</h6>
-                    <small class="text-truncate">@bemblinf</small>
+                    <h6 class="mb-0 text-truncate">{{ student_data3.firstname }} {{ student_data3.lastname }}</h6>
+                    <small class="text-truncate">{{ student_data3.student_id }}</small>
                   </div>
                 </div>
               </td>
-              <td class="text-truncate">milo86@hotmail.com</td>
+              <td class="text-truncate">{{ student_data3.program_name }}</td>
               <td class="text-truncate">
                 <div class="d-flex align-items-center">
                   <i class="ri-user-2-fill text-danger ri-22px me-2"></i>
-                  <span>Author</span>
+                  <span>Student</span>
                 </div>
               </td>
-              <td><span class="badge bg-label-success rounded-pill">Active</span></td>
+              <td><span class="badge bg-label-success rounded-pill">Submitted</span></td>
             </tr>
             <!--/ User 3 -->
 
@@ -693,16 +693,16 @@
                     <img src="{% static 'img/avatars/5.png' %}" alt="Avatar" class="rounded-circle">
                   </div>
                   <div>
-                    <h6 class="mb-0 text-truncate">Bertha Biner</h6>
-                    <small class="text-truncate">@bbinerh</small>
+                    <h6 class="mb-0 text-truncate">{{ student_data4.firstname }} {{ student_data4.lastname }}</h6>
+                    <small class="text-truncate">{{ student_data4.student_id }}</small>
                   </div>
                 </div>
               </td>
-              <td class="text-truncate">lonnie35@hotmail.com</td>
+              <td class="text-truncate">{{ student_data4.program_name }}</td>
               <td class="text-truncate">
                 <div class="d-flex align-items-center">
                   <i class="ri-user-2-fill text-warning ri-22px me-2"></i>
-                  <span>Editor</span>
+                  <span>Student</span>
                 </div>
               </td>
               <td><span class="badge bg-label-warning rounded-pill">Pending</span></td>
@@ -717,19 +717,19 @@
                     <img src="{% static 'img/avatars/4.png' %}" alt="Avatar" class="rounded-circle">
                   </div>
                   <div>
-                    <h6 class="mb-0 text-truncate">Beverlie Krabbe</h6>
-                    <small class="text-truncate">@bkrabbe1d</small>
+                    <h6 class="mb-0 text-truncate">{{ student_data5.firstname }} {{ student_data5.lastname }}</h6>
+                    <small class="text-truncate">{{ student_data5.student_id }}</small>
                   </div>
                 </div>
               </td>
-              <td class="text-truncate">ahmad_Collins@yahoo.com</td>
+              <td class="text-truncate">{{ student_data5.program_name }}</td>
               <td class="text-truncate">
                 <div class="d-flex align-items-center">
                   <i class="ri-user-2-fill ri-22px text-info me-2"></i>
-                  <span>Maintainer</span>
+                  <span>Student</span>
                 </div>
               </td>
-              <td><span class="badge bg-label-success rounded-pill">Active</span></td>
+              <td><span class="badge bg-label-success rounded-pill">Submitted</span></td>
             </tr>
             <!--/ User 5 -->
 
@@ -741,16 +741,16 @@
                     <img src="{% static 'img/avatars/7.png' %}" alt="Avatar" class="rounded-circle">
                   </div>
                   <div>
-                    <h6 class="mb-0 text-truncate">Bradan Rosebotham</h6>
-                    <small class="text-truncate">@brosebothamz</small>
+                    <h6 class="mb-0 text-truncate">{{ student_data6.firstname }} {{ student_data6.lastname }}</h6>
+                    <small class="text-truncate">{{ student_data6.student_id }}</small>
                   </div>
                 </div>
               </td>
-              <td class="text-truncate">tillman.Gleason68@hotmail.com</td>
+              <td class="text-truncate">{{ student_data6.program_name }}</td>
               <td class="text-truncate">
                 <div class="d-flex align-items-center">
                   <i class="ri-user-2-fill text-warning ri-22px me-2"></i>
-                  <span>Editor</span>
+                  <span>Student</span>
                 </div>
               </td>
               <td><span class="badge bg-label-warning rounded-pill">Pending</span></td>
@@ -762,22 +762,22 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div class="avatar avatar-sm me-4">
-                    <img src="{% static 'img/avatars/6.png' %}" alt="Avatar" class="rounded-circle">
+                    <img src="{% static 'img/avatars/anby.png' %}" alt="Avatar" class="rounded-circle">
                   </div>
                   <div>
-                    <h6 class="mb-0 text-truncate">Bree Kilday</h6>
-                    <small class="text-truncate">@bkildayr</small>
+                    <h6 class="mb-0 text-truncate">{{ student_data7.firstname }} {{ student_data7.lastname }}</h6>
+                    <small class="text-truncate">{{ student_data7.student_id }}</small>
                   </div>
                 </div>
               </td>
-              <td class="text-truncate">otho21@gmail.com</td>
+              <td class="text-truncate">{{ student_data7.program_name }}</td>
               <td class="text-truncate">
                 <div class="d-flex align-items-center">
                   <i class="ri-user-2-fill ri-22px text-success me-2"></i>
-                  <span>Subscriber</span>
+                  <span>Student</span>
                 </div>
               </td>
-              <td><span class="badge bg-label-success rounded-pill">Active</span></td>
+              <td><span class="badge bg-label-success rounded-pill">Submitted</span></td>
             </tr>
             <!--/ User 7 -->
 
@@ -786,22 +786,22 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div class="avatar avatar-sm me-4">
-                    <img src="{% static 'img/avatars/1.png' %}" alt="Avatar" class="rounded-circle">
+                    <img src="{% static 'img/avatars/harumasa.png' %}" alt="Avatar" class="rounded-circle">
                   </div>
                   <div>
-                    <h6 class="mb-0 text-truncate">Breena Gallemore</h6>
-                    <small class="text-truncate">@bgallemore6</small>
+                    <h6 class="mb-0 text-truncate">{{ student_data8.firstname }} {{ student_data8.lastname }}</h6>
+                    <small class="text-truncate">{{ student_data8.student_id }}</small>
                   </div>
                 </div>
               </td>
-              <td class="text-truncate">florencio.Little@hotmail.com</td>
+              <td class="text-truncate">{{ student_data8.program_name }}</td>
               <td class="text-truncate">
                 <div class="d-flex align-items-center">
                   <i class="ri-user-2-fill ri-22px text-success me-2"></i>
-                  <span>Subscriber</span>
+                  <span>Student</span>
                 </div>
               </td>
-              <td><span class="badge bg-label-secondary rounded-pill">Inactive</span></td>
+              <td><span class="badge bg-label-secondary rounded-pill">Dropped</span></td>
             </tr>
             <!--/ User 8 -->
 
