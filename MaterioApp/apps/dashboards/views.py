@@ -47,6 +47,11 @@ class DashboardsView(TemplateView):
         programs = Program.objects.all()
         context['programs_labels'] = json.dumps([prog.prog_name for prog in programs])
         context['programs_counts'] = json.dumps([1 for _ in programs])
+        
+        # Colleges Doughnut Chart Data
+        colleges = College.objects.all()
+        context['colleges_labels'] = json.dumps([college.college_name for college in colleges])
+        context['colleges_counts'] = json.dumps([1 for _ in colleges])
         return context
 
     # old template view - static data

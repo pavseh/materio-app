@@ -120,4 +120,37 @@
       plugins: { legend: { display: false } }
     }
   });
+
+  // Total Colleges Doughnut chart
+  // --------------------------------------------------------------------
+  const collegesLabels = JSON.parse(document.getElementById('colleges-labels').textContent);
+  const collegesCounts = JSON.parse(document.getElementById('colleges-counts').textContent);
+  const collegesColors = [
+    'rgba(114, 192, 62, 0.7)',
+    'rgba(211, 81, 211, 0.93)',
+    'rgba(201, 28, 28, 0.81)',
+    'rgba(88, 46, 187, 0.74)',
+    'rgba(201, 191, 48, 0.95)',
+    'rgba(211, 44, 32, 0.9)',
+    'rgba(216, 113, 72, 0.9)',
+    'rgba(45, 59, 190, 0.74)'
+  ];
+  const doughnutColors = collegesLabels.map((_, i) => collegesColors[i % collegesColors.length]);
+  const doughnutCtx = document.getElementById('totalCollegesDoughnutChart').getContext('2d');
+  new Chart(doughnutCtx, {
+    type: 'doughnut',
+    data: {
+      labels: collegesLabels,
+      datasets: [{
+        data: collegesCounts,
+        backgroundColor: doughnutColors,
+        borderColor: doughnutColors.map(color => color.replace('0.7', '1')),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } }
+    }
+  });
 })();
