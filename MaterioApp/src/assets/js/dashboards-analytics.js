@@ -53,124 +53,42 @@
     }
 
 
-  // Total Profit line chart
+  // Total Organizations Bar chart
   // --------------------------------------------------------------------
-  const totalProfitLineChartEl = document.querySelector('#totalProfitLineChart'),
-    totalProfitLineChartConfig = {
-      chart: {
-        height: 90,
-        type: 'line',
-        parentHeightOffset: 0,
-        toolbar: {
-          show: false
-        }
-      },
-      grid: {
-        borderColor: labelColor,
-        strokeDashArray: 6,
-        xaxis: {
-          lines: {
-            show: true
-          }
-        },
-        yaxis: {
-          lines: {
-            show: false
-          }
-        },
-        padding: {
-          top: -15,
-          left: -7,
-          right: 9,
-          bottom: -15
-        }
-      },
-      colors: [config.colors.primary],
-      stroke: {
-        width: 3
-      },
-      series: [
-        {
-          data: [0, 20, 5, 30, 15, 45]
-        }
-      ],
-      tooltip: {
-        shared: false,
-        intersect: true,
-        x: {
-          show: false
-        }
-      },
-      xaxis: {
-        labels: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        },
-        axisBorder: {
-          show: false
-        }
-      },
-      yaxis: {
-        labels: {
-          show: false
-        }
-      },
-      tooltip: {
-        enabled: false
-      },
-      markers: {
-        size: 6,
-        strokeWidth: 3,
-        strokeColors: 'transparent',
-        strokeWidth: 3,
-        colors: ['transparent'],
-        discrete: [
-          {
-            seriesIndex: 0,
-            dataPointIndex: 5,
-            fillColor: cardColor,
-            strokeColor: config.colors.primary,
-            size: 6,
-            shape: 'circle'
-          }
-        ],
-        hover: {
-          size: 7
-        }
-      },
-      responsive: [
-        {
-          breakpoint: 1350,
-          options: {
-            chart: {
-              height: 80
-            }
-          }
-        },
-        {
-          breakpoint: 1200,
-          options: {
-            chart: {
-              height: 100
-            }
-          }
-        },
-        {
-          breakpoint: 768,
-          options: {
-            chart: {
-              height: 110
-            }
-          }
-        }
-      ]
-    };
-  if (typeof totalProfitLineChartEl !== undefined && totalProfitLineChartEl !== null) {
-    const totalProfitLineChart = new ApexCharts(totalProfitLineChartEl, totalProfitLineChartConfig);
-    totalProfitLineChart.render();
-  }
+  const orgsLabels = JSON.parse(document.getElementById('orgs-labels').textContent);
+  const orgsCounts = JSON.parse(document.getElementById('orgs-counts').textContent);
+  // Example color palette (add more colors if you have more orgs)
+  const orgsColors = [
+    'rgba(116, 207, 55, 0.7)',
+    'rgba(11, 168, 121, 0.7)',
+    'rgba(255, 206, 86, 0.7)',
+    'rgba(75, 192, 192, 0.7)',
+    'rgba(153, 102, 255, 0.7)',
+    'rgba(255, 159, 64, 0.7)'
+  ];
+  // Repeat colors if there are more orgs than colors
+  const barColors = orgsLabels.map((_, i) => orgsColors[i % orgsColors.length]);
+  const ctx = document.getElementById('totalOrganizationsBarChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: orgsLabels,
+      datasets: [{
+        // label: 'Organizations',
+        data: orgsCounts,
+        backgroundColor: barColors,
+        borderColor: barColors.map(color => color.replace('0.7', '1')),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false }},
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
 
   // Sessions Column Chart
   // --------------------------------------------------------------------

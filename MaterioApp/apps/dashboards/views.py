@@ -21,7 +21,7 @@ class DashboardsView(TemplateView):
         context['programs_count'] = Program.objects.count()
         context['students_count'] = Student.objects.count()
         
-        # Student Count for the graph
+        # Student Count
         daily_counts = (
             Student.objects
             .annotate(date=TruncDate('created_at'))
@@ -31,20 +31,19 @@ class DashboardsView(TemplateView):
         )
         context['student_chart_labels'] = json.dumps([str(item['date']) for item in daily_counts])
         context['student_chart_data'] = json.dumps([item['count'] for item in daily_counts])
-        return context
 
-    def dashboard_analytics(request):
+        # Top 3 programming languages
         students_count = Student.objects.all()
-        django_users_count = students_count[:30]
-        javascript_users_count = students_count[30:50]
-        aviato_users_count = students_count[50:64]
+        context['django_users_count'] = students_count[:30]
+        context['javascript_users_count'] = students_count[30:50]
+        context['aviato_users_count'] = students_count[50:64]
 
-        context = {
-            'django_users_count': django_users_count,
-            'javascript_users_count': javascript_users_count,
-            'aviato_users_count': aviato_users_count,
-        }
-        return render(request, 'dashboard_analytics.html', context)
+        # Organziations
+        orgs = Organization.objects.annotate(member_count=Count('orgmember'))
+        context['orgs_labels'] = json.dumps([org.name for org in orgs])
+        context['orgs_counts'] = json.dumps([1 for _ in orgs])
+        
+        return context
 
     # old template view - static data
     # class DashboardsView(TemplateView):
