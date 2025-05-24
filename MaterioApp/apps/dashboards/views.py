@@ -20,7 +20,16 @@ class DashboardsView(TemplateView):
         context['organizations_count'] = Organization.objects.count()
         context['programs_count'] = Program.objects.count()
         context['students_count'] = Student.objects.count()
-        
+
+        # Users
+        student = Student.objects.select_related('program').first()
+        context['student_data'] = {
+            'firstname': student.firstname,
+            'lastname': student.lastname,
+            'student_id': student.student_id,
+            'program_name': student.program.prog_name
+        }
+
         # Student Count
         daily_counts = (
             Student.objects
@@ -31,7 +40,7 @@ class DashboardsView(TemplateView):
         )
         context['student_chart_labels'] = json.dumps([str(item['date']) for item in daily_counts])
         context['student_chart_data'] = json.dumps([item['count'] for item in daily_counts])
-
+        
         # Top 3 programming languages
         students_count = Student.objects.all()
         context['django_users_count'] = students_count[:30]
