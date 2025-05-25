@@ -45,7 +45,6 @@ class DashboardsView(TemplateView):
             'program_name': students[2].program.prog_name
         }
 
-
         context['student_data4'] = {
             'firstname': students[3].firstname,
             'lastname': students[3].lastname,
@@ -81,6 +80,8 @@ class DashboardsView(TemplateView):
             'program_name': students[62].program.prog_name
         }
 
+        
+
 
         # Student Count
         daily_counts = (
@@ -109,10 +110,46 @@ class DashboardsView(TemplateView):
         context['programs_labels'] = json.dumps([prog.prog_name for prog in programs])
         context['programs_counts'] = json.dumps([1 for _ in programs])
         
-        # Colleges Doughnut Chart Data
-        colleges = College.objects.all()
+
+        # Fetching College Data
+        colleges = College.objects.all()[:8]
+        
+        context['college_data1'] = {
+            'college_name': colleges[0].college_name
+        }
+        
+        context['college_data2'] = {
+            'college_name': colleges[1].college_name
+        }
+        
+        context['college_data3'] = {
+            'college_name': colleges[2].college_name
+        }
+        
+        context['college_data4'] = {
+            'college_name': colleges[3].college_name
+        }
+        
+        context['college_data5'] = {
+            'college_name': colleges[4].college_name
+        }
+        
+        context['college_data6'] = {
+            'college_name': colleges[5].college_name
+        }
+        
+        context['college_data7'] = {
+            'college_name': colleges[6].college_name
+        }
+        
+        context['college_data8'] = {
+            'college_name': colleges[7].college_name
+        }
+
         context['colleges_labels'] = json.dumps([college.college_name for college in colleges])
         context['colleges_counts'] = json.dumps([1 for _ in colleges])
+
+    
         return context
 
     # old template view - static data
