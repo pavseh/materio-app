@@ -110,6 +110,27 @@ class DashboardsView(TemplateView):
         context['programs_labels'] = json.dumps([prog.prog_name for prog in programs])
         context['programs_counts'] = json.dumps([1 for _ in programs])
         
+        # Fetching Program Name Data (First 5 only)
+        programsList = Program.objects.all()[:5]
+
+        context['program_data1'] = {
+            'program_name': programsList[0].prog_name
+        }
+
+        context['program_data2'] = {
+            'program_name': programsList[1].prog_name
+        }
+        context['program_data3'] = {
+            'program_name': programsList[2].prog_name
+        }
+
+        context['program_data4'] = {
+            'program_name': programsList[3].prog_name
+        }
+
+        context['program_data5'] = {
+            'program_name': programsList[4].prog_name
+        }
 
         # Fetching College Data
         colleges = College.objects.all()[:8]
